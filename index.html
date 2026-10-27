@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>João Marcos Pontes | Engenheiro de Produção</title>
+  <meta name="description" content="Portfólio e currículo de João Marcos Pontes, Engenheiro de Produção com atuação em suprimentos, análise de custos e dados.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Aplica o tema salvo antes de desenhar a página (evita "piscar")
+    (function () {
+      var tema = null;
+      try { tema = localStorage.getItem('tema'); } catch (e) {}
+      if (!tema) tema = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'escuro' : 'claro';
+      document.documentElement.setAttribute('data-tema', tema);
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- MENU FIXO -->
+  <header class="menu">
+    <nav class="menu__conteudo">
+      <a href="#inicio" class="menu__logo">JM<span>.</span></a>
+
+      <ul class="menu__links" id="menu-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+
+      <div class="menu__acoes">
+        <button class="botao-icone" id="botao-tema" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro">
+          <span class="icone-lua">🌙</span><span class="icone-sol">☀️</span>
+        </button>
+        <button class="botao-icone menu__hamburguer" id="botao-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-links">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1. TOPO -->
+    <section class="topo" id="inicio">
+      <div class="container topo__conteudo">
+        <div class="topo__texto revelar">
+          <p class="topo__local">📍 Rio de Janeiro, RJ</p>
+          <h1>João Marcos Pontes</h1>
+          <p class="topo__frase">Engenheiro de Produção · Suprimentos, análise de custos e dados</p>
+          <div class="topo__botoes">
+            <a href="curriculo.pdf" download class="botao botao--principal">⬇ Baixar currículo</a>
+            <a href="#contato" class="botao botao--secundario">Fale comigo</a>
+          </div>
+        </div>
+        <div class="topo__foto revelar">
+          <div class="foto-moldura">
+            <img src="foto.jpg" alt="Foto de João Marcos Pontes" onerror="this.parentElement.classList.add('sem-foto'); this.remove();">
+            <span class="foto-iniciais" aria-hidden="true">JM</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SOBRE MIM -->
+    <section class="secao" id="sobre">
+      <div class="container">
+        <h2 class="secao__titulo revelar">Sobre mim</h2>
+        <div class="cartao sobre revelar">
+          <p>
+            Engenheiro de Produção com atuação em <strong>suprimentos e planejamento de compras</strong>
+            para operação multiunidades: gestão de insumos, análise de custos e integridade de dados em sistema.
+          </p>
+          <p>Foco em <strong>redução de desperdício</strong> e <strong>eficiência de processos</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FORMAÇÃO -->
+    <section class="secao secao--alternada" id="formacao">
+      <div class="container">
+        <h2 class="secao__titulo revelar">Formação</h2>
+        <div class="grade-formacao">
+          <article class="cartao formacao revelar">
+            <span class="formacao__icone">🎓</span>
+            <span class="etiqueta-data">Jul 2026</span>
+            <h3>Engenharia de Produção</h3>
+            <p class="formacao__grau">Bacharelado</p>
+            <p class="formacao__instituicao">Universidade Veiga de Almeida</p>
+            <p class="formacao__extra"><strong>TCC:</strong> Impactos do bloqueio temporário do Canal de Suez na logística global</p>
+          </article>
+          <article class="cartao formacao revelar">
+            <span class="formacao__icone">⚡</span>
+            <span class="etiqueta-data">Dez 2017</span>
+            <h3>Eletrônica</h3>
+            <p class="formacao__grau">Técnico / Médio</p>
+            <p class="formacao__instituicao">Centro Federal de Educação Tecnológica Celso Suckow da Fonseca (CEFET/RJ)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. EXPERIÊNCIA -->
+    <section class="secao" id="experiencia">
+      <div class="container">
+        <h2 class="secao__titulo revelar">Experiência</h2>
+        <ol class="linha-tempo">
+
+          <li class="linha-tempo__item revelar">
+            <div class="cartao">
+              <h3>Gula Gula Restaurante</h3>
+              <div class="cargos">
+                <div class="cargo"><span>Assistente Comercial</span><span class="etiqueta-data">Ago 2026 – Presente</span></div>
+                <div class="cargo"><span>Estagiário Comercial</span><span class="etiqueta-data">Nov 2025 – Jul 2026</span></div>
+              </div>
+              <ul class="lista">
+                <li>Consolidação dos checklists de segurança dos alimentos das 10 unidades, identificando as lojas e os itens críticos para orientar onde agir primeiro.</li>
+                <li>Auditoria dos lançamentos de insumos das 10 unidades e análise de custo por loja e fornecedor.</li>
+                <li>Automação de processos com IA, com <span class="destaque">ganho de 80% de produtividade</span>.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="linha-tempo__item revelar">
+            <div class="cartao">
+              <h3>Evolution Soluções Ambientais <small>· Empresa Júnior</small></h3>
+              <div class="cargos">
+                <div class="cargo"><span>Diretor de Projetos</span><span class="etiqueta-data">Jun 2025 – Mar 2026</span></div>
+              </div>
+              <ul class="lista">
+                <li>Liderei a equipe de projetos durante a execução de consultorias ambientais e infoprodutos voltados para educação, do planejamento à entrega.</li>
+                <li>Implementei melhorias, realizei análises e elaborei relatórios e apresentações para otimização de resultados.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="linha-tempo__item revelar">
+            <div class="cartao">
+              <h3>Freelancer</h3>
+              <div class="cargos">
+                <div class="cargo"><span>Produtor de conteúdo audiovisual com drones</span><span class="etiqueta-data">Jan 2018 – Dez 2024</span></div>
+              </div>
+              <ul class="lista">
+                <li>Produção audiovisual com drone para clientes nacionais e internacionais: captação, edição e atendimento direto ao cliente.</li>
+              </ul>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. HABILIDADES -->
+    <section class="secao secao--alternada" id="habilidades">
+      <div class="container">
+        <h2 class="secao__titulo revelar">Habilidades</h2>
+        <div class="grade-habilidades">
+          <div class="cartao revelar">
+            <h3>📊 Dados e ferramentas</h3>
+            <ul class="etiquetas">
+              <li>Power BI · Intermediário</li>
+              <li>MS Office (Excel) · Intermediário</li>
+              <li>Python</li>
+            </ul>
+          </div>
+          <div class="cartao revelar">
+            <h3>🤖 Inteligência Artificial</h3>
+            <ul class="etiquetas">
+              <li>IA generativa aplicada (Claude)</li>
+              <li>Claude / Claude Code para automação de planilhas</li>
+              <li>Organização de dados com IA</li>
+            </ul>
+          </div>
+          <div class="cartao revelar">
+            <h3>⚙️ Processos</h3>
+            <ul class="etiquetas">
+              <li>Mapeamento de processos (Bizagi, Visio)</li>
+              <li>Lean Six Sigma · White Belt</li>
+            </ul>
+          </div>
+          <div class="cartao revelar">
+            <h3>🌎 Idiomas</h3>
+            <ul class="etiquetas">
+              <li>Inglês · Fluente/Avançado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTATO + 7. DOWNLOAD -->
+    <section class="secao" id="contato">
+      <div class="container">
+        <h2 class="secao__titulo revelar">Contato</h2>
+        <div class="grade-contato">
+          <a class="cartao contato revelar" href="https://www.linkedin.com/in/joao-marcos-pontes" target="_blank" rel="noopener noreferrer">
+            <span class="contato__icone contato__icone--linkedin">in</span>
+            <span class="contato__nome">LinkedIn</span>
+            <span class="contato__valor">linkedin.com/in/joao-marcos-pontes</span>
+          </a>
+          <a class="cartao contato revelar" href="https://wa.me/5521969511769" target="_blank" rel="noopener noreferrer">
+            <span class="contato__icone contato__icone--whatsapp">✆</span>
+            <span class="contato__nome">WhatsApp</span>
+            <span class="contato__valor">(21) 96951-1769</span>
+          </a>
+          <div class="cartao contato contato--email revelar">
+            <a class="contato__link-email" href="mailto:joaomarcospontes10@gmail.com" target="_blank" rel="noopener noreferrer">
+              <span class="contato__icone contato__icone--email">✉</span>
+              <span class="contato__nome">E-mail</span>
+              <span class="contato__valor">joaomarcospontes10@gmail.com</span>
+            </a>
+            <button class="botao botao--pequeno" id="botao-copiar" data-email="joaomarcospontes10@gmail.com">📋 Copiar e-mail</button>
+          </div>
+        </div>
+
+        <div class="download revelar">
+          <p>Quer o currículo completo?</p>
+          <a href="curriculo.pdf" download class="botao botao--principal botao--grande">⬇ Baixar currículo (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>© <span id="ano"></span> João Marcos Pontes · Rio de Janeiro, RJ</p>
+  </footer>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite">copiado!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
