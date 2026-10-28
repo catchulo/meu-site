@@ -113,5 +113,76 @@ botaoCopiar.addEventListener('click', async () => {
   mostrarAviso(copiado ? 'copiado!' : 'Não foi possível copiar');
 });
 
+// ===== Galeria de fotos aéreas =====
+const galeria = document.getElementById('galeria');
+const ampliada = document.getElementById('ampliada');
+const ampliadaImg = document.getElementById('ampliada-img');
+const ampliadaContador = document.getElementById('ampliada-contador');
+let fotoAtual = 0;
+
+function fotosDaGaleria() {
+  return [...galeria.querySelectorAll('img')];
+}
+
+// Remove as fotos que não existem; se não sobrar nenhuma, esconde a galeria
+function removerFotoQuebrada(img) {
+  img.closest('.galeria__item').remove();
+  if (!fotosDaGaleria().length) galeria.remove();
+}
+fotosDaGaleria().forEach((img) => {
+  if (img.complete && img.naturalWidth === 0) removerFotoQuebrada(img);
+  else img.addEventListener('error', () => removerFotoQuebrada(img));
+});
+
+function mostrarFoto(indice) {
+  const fotos = fotosDaGaleria();
+  fotoAtual = (indice + fotos.length) % fotos.length;
+  ampliadaImg.src = fotos[fotoAtual].src;
+  ampliadaImg.alt = fotos[fotoAtual].alt;
+  ampliadaContador.textContent = (fotoAtual + 1) + ' / ' + fotos.length;
+  ampliada.classList.toggle('ampliada--uma', fotos.length < 2);
+}
+
+function abrirFoto(indice) {
+  mostrarFoto(indice);
+  ampliada.hidden = false;
+  document.body.style.overflow = 'hidden';
+  document.getElementById('ampliada-fechar').focus();
+}
+
+function fecharFoto() {
+  ampliada.hidden = true;
+  document.body.style.overflow = '';
+  const fotos = fotosDaGaleria();
+  if (fotos[fotoAtual]) fotos[fotoAtual].closest('.galeria__item').focus();
+}
+
+galeria.addEventListener('click', (e) => {
+  const item = e.target.closest('.galeria__item');
+  if (item) abrirFoto([...galeria.children].indexOf(item));
+});
+document.getElementById('ampliada-fechar').addEventListener('click', fecharFoto);
+document.getElementById('ampliada-anterior').addEventListener('click', () => mostrarFoto(fotoAtual - 1));
+document.getElementById('ampliada-proxima').addEventListener('click', () => mostrarFoto(fotoAtual + 1));
+// Clicar fora da foto fecha
+ampliada.addEventListener('click', (e) => { if (e.target === ampliada) fecharFoto(); });
+
+document.addEventListener('keydown', (e) => {
+  if (ampliada.hidden) return;
+  if (e.key === 'Escape') fecharFoto();
+  if (e.key === 'ArrowLeft') mostrarFoto(fotoAtual - 1);
+  if (e.key === 'ArrowRight') mostrarFoto(fotoAtual + 1);
+});
+
+// Deslizar o dedo no celular troca a foto
+let toqueInicioX = null;
+ampliada.addEventListener('touchstart', (e) => { toqueInicioX = e.touches[0].clientX; }, { passive: true });
+ampliada.addEventListener('touchend', (e) => {
+  if (toqueInicioX === null) return;
+  const diferenca = e.changedTouches[0].clientX - toqueInicioX;
+  if (Math.abs(diferenca) > 50) mostrarFoto(fotoAtual + (diferenca < 0 ? 1 : -1));
+  toqueInicioX = null;
+});
+
 // ===== Ano no rodapé =====
 document.getElementById('ano').textContent = new Date().getFullYear();
