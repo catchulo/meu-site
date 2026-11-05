@@ -17,4 +17,4 @@ Engenheiro de produção recém-formado, atuando em suprimentos: cadeia de compr
 
 ## Contato
 
-Pelo site ou pelo LinkedIn.
+Pelo site, Whatsapp ou pelo LinkedIn.
